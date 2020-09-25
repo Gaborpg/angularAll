@@ -83,6 +83,9 @@ export class InputComponent
 
   @Input()
   get required(): boolean {
+    if (this.ngControl && this.ngControl.errors !== null) {
+      return !!this.ngControl.errors.required;
+    }
     return this._required;
   }
   set required(value: boolean) {

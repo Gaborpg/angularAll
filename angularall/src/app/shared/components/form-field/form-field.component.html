@@ -1,6 +1,12 @@
-<label>
-  <div>
-    {{ label ? label : "" }}
+<div class="formfield" (click)="_control.onContainerClick($event)">
+  <div class="formfield-label">
+    <span class="formfield-label-content">
+      {{ label ? label : "Labes" }}
+    </span>
+    <span class="formfield-label-required" *ngIf="_control.required"> * </span>
   </div>
-  <ng-content></ng-content>
-</label>
+  <div class="formfield-content">
+    <ng-content></ng-content>
+  </div>
+  <div class="formfielf-error"></div>
+</div>

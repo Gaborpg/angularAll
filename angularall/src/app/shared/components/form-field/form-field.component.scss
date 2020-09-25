@@ -1,0 +1,21 @@
+@import "../../../../scss/variables/variables";
+
+.formfield {
+  &-label {
+    &-content {
+      font-size: 1.6rem;
+      font-family: "Architects Daughter", sans-serif;
+      font-weight: 900;
+    }
+    &-required {
+      font-size: 1.6rem;
+      font-family: "Architects Daughter", sans-serif;
+      font-weight: 900;
+      color: $error;
+    }
+  }
+  &-content {
+  }
+  &-error {
+  }
+}
