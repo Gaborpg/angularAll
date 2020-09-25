@@ -1,8 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  DoCheck,
+  HostListener,
+  Inject,
+  OnChanges,
+  OnInit,
+  Optional,
+  Self,
+} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
+import { getInputUnsupportedTypeError } from '../../utils/error';
 import { MyFormFieldControl } from '../models/formfield';
+import {
+  INPUT_VALUE_ACCESSOR,
+  MAT_INPUT_INVALID_TYPES,
+  nextUniqueIdValue,
+  nextUniqueNameValue,
+} from '../models/input';
 
+// tslint:disable-next-line: no-conflicting-lifecycle
 @Component({
   selector: 'myapp-input',
   templateUrl: './input.component.html',
@@ -10,35 +33,166 @@ import { MyFormFieldControl } from '../models/formfield';
   providers: [{ provide: MyFormFieldControl, useExisting: InputComponent }],
 })
 export class InputComponent
-  implements OnInit, MyFormFieldControl<any>, ControlValueAccessor {
-  constructor() {}
+  implements
+    MyFormFieldControl<any>,
+    ControlValueAccessor,
+    DoCheck,
+    OnDestroy,
+    OnChanges,
+    OnInit {
+  protected _uid = `input-${nextUniqueIdValue()}`;
+  protected _uName = `input-${nextUniqueNameValue()}`;
+  private _inputValueAccessor: { value: any };
 
-  value: any;
-  stateChanges: Observable<void>;
-  id: string;
-  placeholder: string;
-  ngControl: NgControl;
+  stateChanges: Subject<void> = new Subject();
   focused: boolean;
-  empty: boolean;
-  required: boolean;
-  disabled: boolean;
-  errorState: boolean;
-  controlType?: string;
-  onContainerClick(event: MouseEvent): void {
-    throw new Error('Method not implemented.');
+  errorState = false;
+
+  @ViewChild('inputElement') _inputElement: ElementRef<HTMLInputElement>;
+
+  @Input()
+  get name(): string {
+    return this._name;
   }
-  writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+  set name(value: string) {
+    this._name = value || (this.ngControl?.name as string) || this._uName;
+  }
+  protected _name: string;
+  @Input()
+  get id(): string {
+    return this._id;
+  }
+  set id(value: string) {
+    this._id = value || this._uid;
+  }
+  protected _id: string;
+
+  get empty(): boolean {
+    return !this._inputElement.nativeElement.value;
+  }
+
+  @Input()
+  get placeholder(): string {
+    return this._placeholder;
+  }
+  set placeholder(value: string) {
+    this._placeholder = value ? value : '';
+  }
+
+  protected _placeholder: string;
+
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = value != null && `${value}` !== 'false';
+  }
+  protected _required = false;
+
+  @Input() class: string;
+
+  @Input()
+  get disabled(): boolean {
+    if (this.ngControl && this.ngControl.disabled !== null) {
+      return this.ngControl.disabled;
+    }
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = value != null && `${value}` !== 'false';
+  }
+  protected _disabled: boolean;
+
+  @Input()
+  get value(): string {
+    return this._value;
+  }
+  set value(value: string) {
+    this._value = value || '';
+    this.onChange(value);
+    this.stateChanges.next();
+  }
+
+  protected _value: string;
+
+  @Input()
+  get type(): string {
+    return this._type;
+  }
+  set type(value: string) {
+    this._type = value || 'text';
+    this._validateType();
+  }
+
+  protected _type = 'text';
+
+  constructor(
+    @Optional() @Self() public ngControl: NgControl,
+    @Optional() @Self() @Inject(INPUT_VALUE_ACCESSOR) inputValueAccessor: any
+  ) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
+    this._inputValueAccessor = inputValueAccessor;
+    this.id = this._id;
+  }
+  ngOnInit(): void {}
+
+  _checkPlaceholder() {
+    if (this._inputElement) {
+      this._placeholder?.length > 0
+        ? this._inputElement.nativeElement.setAttribute(
+            'placeholder',
+            this._placeholder
+          )
+        : this._inputElement.nativeElement.removeAttribute('placeholder');
+    }
+  }
+  // tslint:enable:no-host-decorator-in-concrete
+  focusChanged(isFocused: boolean) {
+    if (isFocused !== this.focused && (!this.disabled || !isFocused)) {
+      this.focused = isFocused;
+      this.stateChanges.next();
+    }
+    this.onTouch();
+  }
+
+  onChange: (_: any) => void = (_: any) => {};
+  onTouch: () => void = () => {};
+
+  _validateType() {
+    if (MAT_INPUT_INVALID_TYPES.indexOf(this.type) > -1) {
+      throw getInputUnsupportedTypeError(this._type);
+    }
+  }
+
+  onContainerClick(event: MouseEvent): void {
+    this._inputElement.nativeElement.focus();
+  }
+  writeValue(value: string): void {
+    if (value) {
+      this.value = value;
+    }
   }
   registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+    this.onChange = fn;
   }
   registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+    this.onTouch = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    this.disabled = isDisabled;
   }
 
-  ngOnInit(): void {}
+  ngDoCheck() {
+    this._checkPlaceholder();
+  }
+  ngOnChanges() {
+    this.stateChanges.next();
+  }
+
+  ngOnDestroy(): void {
+    this.stateChanges.complete();
+  }
 }

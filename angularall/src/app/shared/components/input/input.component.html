@@ -1,1 +1,13 @@
-<p>input works!</p>
+<div (click)="onContainerClick($event)">
+  <input
+    [id]="id"
+    [(ngModel)]="value"
+    [name]="name"
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [class]="class"
+    (blur)="focusChanged(false)"
+    (focus)="focusChanged(true)"
+    #inputElement
+  />
+</div>

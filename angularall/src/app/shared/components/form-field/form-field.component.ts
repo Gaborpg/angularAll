@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { MyFormFieldControl } from '../models/formfield';
-import { getFormFieldMissingControlError } from './error';
+import { getFormFieldMissingControlError } from '../../utils/error';
 
 @Component({
   selector: 'myapp-form-field',
@@ -24,8 +24,6 @@ export class FormFieldComponent implements OnInit, AfterContentInit {
   @ContentChild(MyFormFieldControl)
   _controlNonStatic: MyFormFieldControl<any>;
   get _control() {
-    // TODO(crisbeto): we need this workaround in order to support both Ivy and ViewEngine.
-    //  We should clean this up once Ivy is the default renderer.
     return (
       this._explicitFormFieldControl ||
       this._controlNonStatic ||

@@ -1,3 +1,11 @@
-<myapp-form-field>
-  <myapp-checkbox></myapp-checkbox>
-</myapp-form-field>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <myapp-form-field>
+    <myapp-input formControlName="test"></myapp-input>
+  </myapp-form-field>
+  <myapp-form-field>
+    <myapp-input formControlName="test2"></myapp-input>
+  </myapp-form-field>
+  <button type="submit">Submit</button>
+</form>
+
+{{ form.value.test }}
