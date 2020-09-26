@@ -83,15 +83,14 @@ export class InputComponent
 
   @Input()
   get required(): boolean {
-    if (this.ngControl && this.ngControl.errors !== null) {
-      return !!this.ngControl.errors.required;
-    }
     return this._required;
   }
   set required(value: boolean) {
-    this._required = value != null && `${value}` !== 'false';
+    this._required =
+      (value != null && `${value}` !== 'false') ||
+      !!this.ngControl.getError('required');
   }
-  protected _required = false;
+  protected _required: boolean;
 
   @Input() class: string;
 
@@ -140,7 +139,18 @@ export class InputComponent
     this._inputValueAccessor = inputValueAccessor;
     this.id = this._id;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (
+      this.ngControl &&
+      this.ngControl.errors !== null &&
+      !!this.ngControl.getError('required')
+    ) {
+      this._required = true;
+    } else {
+      this._required = false;
+    }
+    console.log(this.ngControl);
+  }
 
   _checkPlaceholder() {
     if (this._inputElement) {

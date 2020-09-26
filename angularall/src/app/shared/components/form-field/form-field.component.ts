@@ -7,7 +7,10 @@ import {
   OnInit,
 } from '@angular/core';
 import { MyFormFieldControl } from '../models/formfield';
-import { getFormFieldMissingControlError } from '../../utils/error';
+import {
+  ErrorToString,
+  getFormFieldMissingControlError,
+} from '../../utils/error';
 
 @Component({
   selector: 'myapp-form-field',
@@ -17,6 +20,8 @@ import { getFormFieldMissingControlError } from '../../utils/error';
 })
 export class FormFieldComponent implements OnInit, AfterContentInit {
   @Input() label?: string;
+
+  errorToString = ErrorToString;
 
   @ContentChild(MyFormFieldControl, { static: true })
   _controlStatic: MyFormFieldControl<any>;

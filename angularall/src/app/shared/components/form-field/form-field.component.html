@@ -1,12 +1,39 @@
 <div class="formfield" (click)="_control.onContainerClick($event)">
   <div class="formfield-label">
-    <span class="formfield-label-content">
+    <span
+      class="formfield-label-content"
+      [ngClass]="{
+        error:
+          _control.ngControl.errors &&
+          _control.ngControl.invalid &&
+          !_control.disabled &&
+          (_control.ngControl.dirty || _control.ngControl.touched)
+      }"
+    >
       {{ label ? label : "Labes" }}
     </span>
-    <span class="formfield-label-required" *ngIf="_control.required"> * </span>
+    <span
+      class="formfield-label-required"
+      *ngIf="_control.required && !_control.disabled"
+    >
+      *
+    </span>
   </div>
   <div class="formfield-content">
     <ng-content></ng-content>
   </div>
-  <div class="formfielf-error"></div>
+  <ng-container
+    *ngIf="
+      _control.ngControl.errors &&
+      _control.ngControl.invalid &&
+      (_control.ngControl.dirty || _control.ngControl.touched)
+    "
+  >
+    <div
+      class="formfield-error"
+      *ngFor="let error of _control.ngControl.errors | keyvalue"
+    >
+      {{ error.key | enumkeyvalue: errorToString }}
+    </div>
+  </ng-container>
 </div>

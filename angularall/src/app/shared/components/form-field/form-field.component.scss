@@ -2,6 +2,7 @@
 
 .formfield {
   &-label {
+    cursor: pointer;
     &-content {
       font-size: 1.6rem;
       font-family: "Architects Daughter", sans-serif;
@@ -15,7 +16,13 @@
     }
   }
   &-content {
+    margin: 1rem 0;
   }
   &-error {
+    font-size: 1.4rem;
+    font-family: "Architects Daughter", sans-serif;
+    font-weight: 300;
+    color: $error;
+    margin: 1rem 0;
   }
 }
