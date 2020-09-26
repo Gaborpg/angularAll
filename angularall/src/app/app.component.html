@@ -1,11 +1,13 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <myapp-form-field>
-    <myapp-input formControlName="test"></myapp-input>
-  </myapp-form-field>
-  <myapp-form-field>
-    <myapp-input formControlName="test2"></myapp-input>
-  </myapp-form-field>
-  <button type="submit">Submit</button>
-</form>
+<myapp-panel>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <myapp-form-field>
+      <myapp-input formControlName="test"></myapp-input>
+    </myapp-form-field>
+    <myapp-form-field>
+      <myapp-input formControlName="test2"></myapp-input>
+    </myapp-form-field>
+    <button type="submit">Submit</button>
+  </form>
+</myapp-panel>
 
 {{ form.value.test }}

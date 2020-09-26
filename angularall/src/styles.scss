@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Lato&family=Montserrat&family=Open+Sans&family=Roboto&family=Shadows+Into+Light&display=swap");
-@import "./scss/mixings/mixings";
-@import "./scss/variables/variables";
+@import "mixings";
+@import "variables";
 
 *,
 *:after,
@@ -32,7 +32,7 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: rgb(237, 243, 249);
+  background: linear-gradient(#141e30, #243b55);
 }
 
 html,

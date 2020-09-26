@@ -1,0 +1,7 @@
+<div class="panel-container" #panel>
+  <ng-container [ngTemplateOutlet]="header"></ng-container>
+  <div class="panel-content">
+    <ng-content></ng-content>
+  </div>
+  <ng-container [ngTemplateOutlet]="footer"></ng-container>
+</div>
