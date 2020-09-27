@@ -17,13 +17,13 @@ import {
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { getInputUnsupportedTypeError } from '../../utils/error';
-import { MyFormFieldControl } from '../models/formfield';
+import { MyFormFieldControl } from '../z_models/formfield';
 import {
   INPUT_VALUE_ACCESSOR,
   MAT_INPUT_INVALID_TYPES,
-  nextUniqueIdValue,
-  nextUniqueNameValue,
-} from '../models/input';
+  nextUniqueIdValueInput,
+  nextUniqueNameValueInput,
+} from '../z_models/input';
 
 // tslint:disable-next-line: no-conflicting-lifecycle
 @Component({
@@ -40,8 +40,8 @@ export class InputComponent
     OnDestroy,
     OnChanges,
     OnInit {
-  protected _uid = `input-${nextUniqueIdValue()}`;
-  protected _uName = `input-${nextUniqueNameValue()}`;
+  protected _uid = `input-${nextUniqueIdValueInput()}`;
+  protected _uName = `input-${nextUniqueNameValueInput()}`;
   private _inputValueAccessor: { value: any };
 
   stateChanges: Subject<void> = new Subject();
@@ -92,7 +92,7 @@ export class InputComponent
   }
   protected _required: boolean;
 
-  @Input() class: string;
+  @Input() class?: string;
 
   @Input()
   get disabled(): boolean {
@@ -149,7 +149,6 @@ export class InputComponent
     } else {
       this._required = false;
     }
-    console.log(this.ngControl);
   }
 
   _checkPlaceholder() {

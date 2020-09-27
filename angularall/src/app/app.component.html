@@ -1,13 +1,21 @@
-<myapp-panel>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <myapp-form-field>
-      <myapp-input formControlName="test"></myapp-input>
-    </myapp-form-field>
-    <myapp-form-field>
-      <myapp-input formControlName="test2"></myapp-input>
-    </myapp-form-field>
-    <button type="submit">Submit</button>
-  </form>
-</myapp-panel>
-
-{{ form.value.test }}
+<myapp-layout-middle>
+  <myapp-panel-middle>
+    <myapp-panel>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <myapp-form-field label="UserName">
+          <myapp-input formControlName="test"></myapp-input>
+        </myapp-form-field>
+        <myapp-form-field label="Password">
+          <myapp-input formControlName="test2" type="password"></myapp-input>
+        </myapp-form-field>
+        <myapp-button type="submit" title="Submit"></myapp-button>
+        <myapp-button
+          type="submit"
+          title="other"
+          dynamicColor="#fc5c65"
+          [disabled]="true"
+        ></myapp-button>
+      </form>
+    </myapp-panel>
+  </myapp-panel-middle>
+</myapp-layout-middle>

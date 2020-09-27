@@ -6,7 +6,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { MyFormFieldControl } from '../models/formfield';
+import { MyFormFieldControl } from '../z_models/formfield';
 import {
   ErrorToString,
   getFormFieldMissingControlError,

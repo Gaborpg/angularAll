@@ -1,1 +1,17 @@
-<p>button works!</p>
+<button
+  [id]="id"
+  [name]="name"
+  [type]="type"
+  [disabled]="disabled"
+  [class]="class"
+  (click)="onClickButton($event)"
+  #button
+>
+  <div class="btn-content">
+    <span class="btn-content-animation"></span>
+    <span class="btn-content-animation"></span>
+    <span class="btn-content-animation"></span>
+    <span class="btn-content-animation"></span>
+    <span class="btn-content-title"> {{ title }}</span>
+  </div>
+</button>

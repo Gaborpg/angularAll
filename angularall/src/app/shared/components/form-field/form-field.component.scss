@@ -1,13 +1,14 @@
 @import "variables";
 
 .formfield {
+  min-height: 10rem;
   &-label {
     cursor: pointer;
     &-content {
       font-size: 1.6rem;
       font-family: "Architects Daughter", sans-serif;
       font-weight: 900;
-      color: $white;
+      // Todo color: $white;
     }
     &-required {
       font-size: 1.6rem;

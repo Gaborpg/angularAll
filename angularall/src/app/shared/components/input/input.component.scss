@@ -19,7 +19,7 @@ input[type="email"] {
   letter-spacing: normal;
   width: 100%;
   height: 3rem;
-  color: $white;
+  // Todo color: $white;
   :disabled {
     color: black;
     cursor: not-allowed !important;

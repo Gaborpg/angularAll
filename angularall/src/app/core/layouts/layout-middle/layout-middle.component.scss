@@ -1,0 +1,30 @@
+@import "mixings";
+
+.grid-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 20rem;
+
+  @include respond(tab-land) {
+    // width < 1200?
+    padding: 0 15rem;
+    //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    padding: 0 10rem;
+  }
+
+  @include respond(phone) {
+    // width < 600?
+    padding: 0;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12, 12/16
+  }
+}
