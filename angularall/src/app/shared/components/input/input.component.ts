@@ -138,6 +138,7 @@ export class InputComponent
     }
     this._inputValueAccessor = inputValueAccessor;
     this.id = this._id;
+    this.name = this._name;
   }
   ngOnInit(): void {
     if (

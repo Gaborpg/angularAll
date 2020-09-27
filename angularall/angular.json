@@ -37,7 +37,11 @@
             "styles": ["src/styles.scss"],
             "scripts": [],
             "stylePreprocessorOptions": {
-              "includePaths": ["./src/scss/variables", "./src/scss/mixings"]
+              "includePaths": [
+                "./src/scss/variables",
+                "./src/scss/mixings",
+                "./src/scss/flex"
+              ]
             }
           },
           "configurations": {

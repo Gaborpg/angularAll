@@ -8,13 +8,15 @@
         <myapp-form-field label="Password">
           <myapp-input formControlName="test2" type="password"></myapp-input>
         </myapp-form-field>
-        <myapp-button type="submit" title="Submit"></myapp-button>
-        <myapp-button
-          type="submit"
-          title="other"
-          dynamicColor="#fc5c65"
-          [disabled]="true"
-        ></myapp-button>
+        <div class="flex-sbtw">
+          <myapp-button type="submit" title="Submit"></myapp-button>
+          <myapp-button
+            type="button"
+            title="other"
+            dynamicColor="#fc5c65"
+            [disabled]="true"
+          ></myapp-button>
+        </div>
       </form>
     </myapp-panel>
   </myapp-panel-middle>

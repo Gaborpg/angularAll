@@ -18,8 +18,8 @@ import {
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements AfterViewInit {
-  protected _uid = `input-${nextUniqueIdValueInput()}`;
-  protected _uName = `input-${nextUniqueNameValueInput()}`;
+  protected _uid = `button-${nextUniqueIdValueInput()}`;
+  protected _uName = `button-${nextUniqueNameValueInput()}`;
 
   @ViewChild('button') buttonEl: ElementRef;
 
@@ -69,6 +69,12 @@ export class ButtonComponent implements AfterViewInit {
 
   @Input()
   dynamicColor = '#03e9f4';
+
+  constructor() {
+    /*Call the setters*/
+    this.id = this._id;
+    this.name = this._name;
+  }
 
   ngAfterViewInit(): void {
     this.buttonEl.nativeElement.style.setProperty(
