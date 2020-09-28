@@ -14,7 +14,7 @@ import {
   styleUrls: ['./panel.component.scss'],
 })
 export class PanelComponent implements OnInit {
-  @ViewChild('panel', { static: true }) panel: ElementRef;
+  @ViewChild('panel', { static: true }) protected _panel: ElementRef;
   @Input() color: string;
   @Input() height?: string;
   @Input() header: TemplateRef<any>;
@@ -24,12 +24,12 @@ export class PanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.renderer.setStyle(
-      this.panel.nativeElement,
+      this._panel.nativeElement,
       'background-color',
       this.color ? this.color : '#ffffff'
     );
     if (this.height) {
-      this.renderer.setStyle(this.panel.nativeElement, 'height', this.height);
+      this.renderer.setStyle(this._panel.nativeElement, 'height', this.height);
     }
   }
 }

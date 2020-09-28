@@ -8,8 +8,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import {
-  nextUniqueIdValueInput,
-  nextUniqueNameValueInput,
+  nextUniqueNameValueButton,
+  nextUniqueIdValueButton,
 } from '../z_models/input';
 
 @Component({
@@ -18,10 +18,10 @@ import {
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements AfterViewInit {
-  protected _uid = `button-${nextUniqueIdValueInput()}`;
-  protected _uName = `button-${nextUniqueNameValueInput()}`;
+  protected _uid = `button-${nextUniqueIdValueButton()}`;
+  protected _uName = `button-${nextUniqueNameValueButton()}`;
 
-  @ViewChild('button') buttonEl: ElementRef;
+  @ViewChild('button') private _buttonEl: ElementRef;
 
   @Input()
   title: string;
@@ -77,7 +77,7 @@ export class ButtonComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.buttonEl.nativeElement.style.setProperty(
+    this._buttonEl.nativeElement.style.setProperty(
       '--button-dynamic',
       this.dynamicColor
     );

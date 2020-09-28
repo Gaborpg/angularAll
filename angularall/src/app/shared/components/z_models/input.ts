@@ -30,3 +30,16 @@ export let nextUniqueNameButton = 0;
 export function nextUniqueNameValueButton() {
   return nextUniqueNameButton++;
 }
+export let nextUniquIdButton = 0;
+export function nextUniqueIdValueButton() {
+  return nextUniquIdButton++;
+}
+
+export let nextUniquIdCheckbox = 0;
+export function nextUniquValueIdCheckbox() {
+  return nextUniquIdCheckbox++;
+}
+export let nextUniquNameCheckbox = 0;
+export function nextUniquValueNameCheckbox() {
+  return nextUniquNameCheckbox++;
+}

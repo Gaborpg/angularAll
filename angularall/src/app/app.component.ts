@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       test: [null, [Validators.required, Validators.email]],
-      test2: ['Teszt'],
+      test2: [null, Validators.required],
+      test3: [null, Validators.required],
     });
   }
 

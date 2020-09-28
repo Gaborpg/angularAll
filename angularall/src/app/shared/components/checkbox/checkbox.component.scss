@@ -1,0 +1,180 @@
+@import "variables";
+
+.label {
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  position: relative;
+  margin-bottom: 1.2rem;
+  cursor: pointer;
+
+  .text {
+    margin-left: 2rem;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:disabled {
+      & ~ .checkmark {
+        cursor: not-allowed;
+        background-color: $error;
+      }
+    }
+  }
+
+  .checkmark {
+    height: 2.5rem;
+    min-height: 2.5rem;
+    max-height: 2.5rem;
+    max-width: 2.5rem;
+    min-width: 2.5rem;
+    width: 2.5rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba($black, 0.8);
+    position: relative;
+
+    &:hover {
+      background-color: rgba($blue, 0.2);
+    }
+
+    &:after {
+      content: "";
+      border: solid $blue;
+      border-width: 0 0.3rem 0.3rem 0;
+      position: relative;
+      top: 42%;
+      left: 50%;
+      height: 1.6rem;
+      width: 0.9rem;
+      display: none;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  input[type="checkbox"]:checked ~ .checkmark:after {
+    display: block;
+  }
+}
+
+$duration: 0.8s;
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding: 1rem 1rem 1rem 3rem;
+  margin: 0 auto;
+  cursor: pointer;
+  border-bottom: solid 1px #ddd;
+  margin-bottom: 2rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.checkbox__state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.checkbox__text {
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: saturate(#1b4a4e, 15%);
+  transition: all $duration / 2 linear $duration / 2;
+}
+
+.checkbox__icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.6rem;
+  height: 3rem;
+  margin: auto;
+
+  fill: none;
+  stroke: $check-box;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.checkbox__box,
+.checkbox__check {
+  transition: stroke-dashoffset $duration cubic-bezier(0.9, 0, 0.5, 1);
+}
+
+.checkbox__circle {
+  stroke: $check-box;
+  stroke-dasharray: 1 6;
+  stroke-width: 0;
+
+  transform-origin: 13.5px 12.5px;
+  transform: scale(0.4) rotate(0deg);
+  animation: none $duration linear; //cubic-bezier(.08,.56,.04,.98);
+
+  @keyframes explode {
+    //0% { stroke-width: 0; transform: scale(0.5) rotate(0deg); }
+    30% {
+      stroke-width: 3;
+      stroke-opacity: 1;
+      transform: scale(0.8) rotate(40deg);
+      //animation-timing-function: cubic-bezier(.89,.01,.95,.51);
+    }
+    100% {
+      stroke-width: 0;
+      stroke-opacity: 0;
+      transform: scale(1.1) rotate(60deg);
+      //animation-timing-function: cubic-bezier(.08,.56,.04,.98);
+    }
+  }
+}
+
+.checkbox__box {
+  stroke-dasharray: 56.1053, 56.1053;
+  stroke-dashoffset: 0;
+  transition-delay: $duration * 0.2;
+}
+.checkbox__check {
+  stroke: $check-box;
+  stroke-dasharray: 9.8995, 9.8995;
+  stroke-dashoffset: 9.8995;
+  transition-duration: $duration * 0.4;
+}
+
+.checkbox__circle {
+  animation-delay: $duration * 0.7;
+  animation-duration: $duration * 0.7;
+}
+
+.checkbox__state:checked {
+  ~ .checkbox__text {
+    transition-delay: 0s;
+    color: $check-box;
+    opacity: 0.6;
+  }
+
+  ~ .checkbox__icon .checkbox__box {
+    stroke-dashoffset: 56.1053;
+    transition-delay: 0s;
+  }
+
+  ~ .checkbox__icon .checkbox__check {
+    stroke-dashoffset: 0;
+    transition-delay: $duration * 0.6;
+  }
+  ~ .checkbox__icon .checkbox__circle {
+    animation-name: explode;
+  }
+}

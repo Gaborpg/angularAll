@@ -34,7 +34,7 @@ import {
 })
 export class InputComponent
   implements
-    MyFormFieldControl<any>,
+    MyFormFieldControl<string>,
     ControlValueAccessor,
     DoCheck,
     OnDestroy,
@@ -48,7 +48,9 @@ export class InputComponent
   focused: boolean;
   errorState = false;
 
-  @ViewChild('inputElement') _inputElement: ElementRef<HTMLInputElement>;
+  @ViewChild('inputElement') protected _inputElement: ElementRef<
+    HTMLInputElement
+  >;
 
   @Input()
   get name(): string {
@@ -135,6 +137,7 @@ export class InputComponent
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
+      this.required = this._required;
     }
     this._inputValueAccessor = inputValueAccessor;
     this.id = this._id;

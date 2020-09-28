@@ -1,1 +1,72 @@
-<p>checkbox works!</p>
+<!--
+  Original Svg from:
+  https://codepen.io/shshaw/pen/WXMdwE
+  I liked the idea!
+-->
+
+<svg
+  viewBox="0 0 0 0"
+  style="position: absolute; z-index: -1; opacity: 0"
+  width="100%"
+>
+  <defs>
+    <linearGradient
+      id="boxGradient"
+      gradientUnits="userSpaceOnUse"
+      x1="0"
+      y1="0"
+      x2="25"
+      y2="25"
+    >
+      <stop offset="0%" [attr.stop-color]="color_0" />
+      <stop offset="100%" [attr.stop-color]="color_100" />
+    </linearGradient>
+
+    <linearGradient id="lineGradient">
+      <stop offset="0%" stop-color="#0FC0F5" />
+      <stop offset="100%" stop-color="#27FDC7" />
+    </linearGradient>
+
+    <path
+      id="checkbox__box"
+      stroke="url(#boxGradient)"
+      d="M21 12.7v5c0 1.3-1 2.3-2.3 2.3H8.3C7 20 6 19 6 17.7V7.3C6 6 7 5 8.3 5h10.4C20 5 21 6 21 7.3v5.4"
+    ></path>
+    <path
+      id="checkbox__check"
+      stroke="url(#boxGradient)"
+      d="M10 13l2 2 5-5"
+    ></path>
+    <circle id="checkbox__circle" cx="13.5" cy="12.5" r="10"></circle>
+  </defs>
+</svg>
+
+<label class="checkbox">
+  <input
+    class="checkbox__state"
+    [id]="id"
+    [required]="required"
+    [checked]="checked"
+    [attr.value]="value"
+    [disabled]="disabled"
+    [attr.name]="name"
+    [tabIndex]="tabIndex"
+    type="checkbox"
+    (change)="onChange($event.target.checked)"
+    #checkBox
+  />
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 200 25"
+    class="checkbox__icon"
+  >
+    <use xlink:href="#checkbox__line" class="checkbox__line"></use>
+    <use xlink:href="#checkbox__box" class="checkbox__box"></use>
+    <use xlink:href="#checkbox__check" class="checkbox__check"></use>
+    <use xlink:href="#checkbox__circle" class="checkbox__circle"></use>
+  </svg>
+
+  <div class="checkbox__text">{{ label || "" }}</div>
+</label>

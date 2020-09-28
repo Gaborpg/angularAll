@@ -13,7 +13,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 })
 export class PanelMiddleComponent implements OnInit {
   @ViewChild(TemplateRef, { static: true })
-  private implicitContent: TemplateRef<any>;
+  private _implicitContent: TemplateRef<any>;
 
   private contentPortal: TemplatePortal | null = null;
 
@@ -25,7 +25,7 @@ export class PanelMiddleComponent implements OnInit {
 
   ngOnInit(): void {
     this.contentPortal = new TemplatePortal(
-      this.implicitContent,
+      this._implicitContent,
       this.viewContainerRef
     );
   }
