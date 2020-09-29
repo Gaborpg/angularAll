@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     this.form = this.fb.group({
       test: [null, [Validators.required, Validators.email]],
       test2: [null, Validators.required],
-      test3: [null, Validators.required],
+      test3: [true, Validators.required],
     });
   }
 

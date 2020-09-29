@@ -39,6 +39,7 @@ export class CheckboxComponent
   }
   set value(value: boolean) {
     this._value = value != null && `${value}` !== 'false';
+    this.stateChanges.next();
     this.onChange(value);
   }
   protected _value = false;
@@ -84,15 +85,6 @@ export class CheckboxComponent
 
   @Input()
   class: string;
-
-  @Input()
-  get checked(): boolean {
-    return this._checked;
-  }
-  set checked(value: boolean) {
-    this._checked = value != null && `${value}` !== 'false';
-  }
-  protected _checked: boolean;
 
   @Input()
   label = '';
