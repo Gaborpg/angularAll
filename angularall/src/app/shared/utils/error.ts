@@ -3,7 +3,7 @@ export function getFormFieldMissingControlError(): Error {
 }
 
 export function getInputUnsupportedTypeError(type: string): Error {
-  return Error(`Input type "${type}" isn't supported by matInput.`);
+  return Error(`Input type "${type}" isn't supported by myappInput.`);
 }
 
 export enum ErrorToString {
