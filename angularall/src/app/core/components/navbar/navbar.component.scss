@@ -1,0 +1,104 @@
+@import "variables";
+@import "mixings";
+
+.nav {
+  &-container {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: $white;
+    box-shadow: $default-box-shadow-nav;
+    padding: 1rem 0;
+
+    &-left {
+      width: calc(100% / 3);
+      display: flex;
+      align-items: center;
+      @include respond(tab-port) {
+        // width < 900?
+        width: inherit;
+      }
+    }
+    &-right {
+      width: calc(100% / 3);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 1rem;
+      @include respond(tab-port) {
+        // width < 900?
+        width: inherit;
+      }
+    }
+    &-middle {
+      width: calc(100% / 3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include respond(tab-port) {
+        // width < 900?
+        display: none;
+      }
+    }
+  }
+  &-list {
+    display: flex;
+    align-items: center;
+    &_item {
+      list-style-type: none;
+      font-size: 1.6rem;
+      font-family: $default-font;
+      margin: 0 2rem;
+      &-link {
+        cursor: pointer;
+        white-space: nowrap;
+        &:link,
+        &:visited {
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+
+        &:hover,
+        &:active {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &-user {
+    &_icon {
+      display: flex;
+
+      &-details {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+        justify-content: center;
+        figcaption {
+          font-family: $default-font;
+          font-size: 1.4rem;
+          font-weight: 700;
+
+          @include respond(tab-port) {
+            // width < 900?
+            display: none;
+          }
+        }
+        p {
+          @include respond(tab-port) {
+            // width < 900?
+            display: none;
+          }
+          font-family: $default-font;
+          font-size: 1.2rem;
+        }
+      }
+      img {
+        width: 5rem;
+        border-radius: 50%;
+      }
+    }
+  }
+}

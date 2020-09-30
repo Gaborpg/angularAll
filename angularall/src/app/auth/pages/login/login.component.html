@@ -1,0 +1,27 @@
+<p>login works!</p>
+<myapp-layout-middle>
+  <myapp-panel-middle>
+    <myapp-panel>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <myapp-form-field label="UserName">
+          <myapp-input formControlName="user"></myapp-input>
+        </myapp-form-field>
+        <myapp-form-field label="Password">
+          <myapp-input formControlName="password" type="password"></myapp-input>
+        </myapp-form-field>
+        <div class="flex-sbtw">
+          <myapp-button
+            type="submit"
+            title="Log in"
+            [disabled]="!form.valid"
+          ></myapp-button>
+          <myapp-button
+            type="button"
+            title="Sign up"
+            dynamicColor="#26de81"
+          ></myapp-button>
+        </div>
+      </form>
+    </myapp-panel>
+  </myapp-panel-middle>
+</myapp-layout-middle>

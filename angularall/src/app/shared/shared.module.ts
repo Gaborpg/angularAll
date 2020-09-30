@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormFieldComponent } from './components/form-field/form-field.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './components/input/input.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
@@ -11,6 +10,10 @@ import { PanelComponent } from './components/panel/panel.component';
 import { PortalModule } from '@angular/cdk/portal';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { LayoutModule } from '@angular/cdk/layout';
+
+import { LayoutMiddleComponent } from './layouts/layout-middle/layout-middle.component';
+import { PanelMiddleComponent } from './layouts/layout-middle/panel-middle.component';
+
 @NgModule({
   declarations: [
     FormFieldComponent,
@@ -19,10 +22,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     EnumkeyvaluePipe,
     ButtonComponent,
     PanelComponent,
+    LayoutMiddleComponent,
+    PanelMiddleComponent,
   ],
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     PortalModule,
@@ -31,7 +35,6 @@ import { LayoutModule } from '@angular/cdk/layout';
   ],
   exports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
 
@@ -44,6 +47,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     PortalModule,
     OverlayModule,
     LayoutModule,
+    LayoutMiddleComponent,
+    PanelMiddleComponent,
   ],
 })
 export class SharedModule {}

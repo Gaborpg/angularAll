@@ -1,9 +1,14 @@
 @import "variables";
+@import "mixings";
 .panel-container {
   border-radius: 0.5rem;
   width: 100%;
   min-width: 50rem;
   box-shadow: $default-box-shadow;
+  @include respond(tab-port) {
+    // width < 900?
+    min-width: inherit;
+  }
 }
 
 .panel-content {
