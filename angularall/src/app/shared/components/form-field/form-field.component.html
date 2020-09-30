@@ -29,11 +29,8 @@
       (_control.ngControl.dirty || _control.ngControl.touched)
     "
   >
-    <div
-      class="formfield-error"
-      *ngFor="let error of _control.ngControl.errors | keyvalue"
-    >
-      {{ error.key | enumkeyvalue: errorToString }}
+    <div class="formfield-error">
+      {{ _control.ngControl.errors | errorHandle }}
     </div>
   </ng-container>
 </div>

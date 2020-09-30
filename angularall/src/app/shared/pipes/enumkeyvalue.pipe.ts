@@ -1,16 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { ErrorHandlerClass } from '../utils/error';
 
 @Pipe({
-  name: 'enumkeyvalue',
+  name: 'errorHandle',
 })
-export class EnumkeyvaluePipe implements PipeTransform {
-  transform(key: string, obj?: object): string {
+export class ErrorHandlePipe implements PipeTransform {
+  transform(key: { [key: string]: any }): string {
     let error: string;
-    if (obj[key]) {
-      error = obj[key];
-    } else {
-      error = 'Something went wrong!';
-    }
+    Object.keys(key).forEach((k) => {
+      error = ErrorHandlerClass.errorHandeling(k, key);
+    });
 
     return error;
   }

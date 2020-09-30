@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MyFormFieldControl } from '../z_models/formfield';
 import {
-  ErrorToString,
+  ErrorHandlerClass,
   getFormFieldMissingControlError,
 } from '../../utils/error';
 
@@ -21,7 +21,7 @@ import {
 export class FormFieldComponent implements OnInit, AfterContentInit {
   @Input() label?: string;
 
-  errorToString = ErrorToString;
+  errorToString = ErrorHandlerClass;
 
   @ContentChild(MyFormFieldControl, { static: true })
   _controlStatic: MyFormFieldControl<any>;

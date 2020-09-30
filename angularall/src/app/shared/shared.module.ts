@@ -4,7 +4,7 @@ import { FormFieldComponent } from './components/form-field/form-field.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './components/input/input.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
-import { EnumkeyvaluePipe } from './pipes/enumkeyvalue.pipe';
+import { ErrorHandlePipe } from './pipes/enumkeyvalue.pipe';
 import { ButtonComponent } from './components/button/button.component';
 import { PanelComponent } from './components/panel/panel.component';
 import { PortalModule } from '@angular/cdk/portal';
@@ -19,7 +19,7 @@ import { PanelMiddleComponent } from './layouts/layout-middle/panel-middle.compo
     FormFieldComponent,
     InputComponent,
     CheckboxComponent,
-    EnumkeyvaluePipe,
+    ErrorHandlePipe,
     ButtonComponent,
     PanelComponent,
     LayoutMiddleComponent,
