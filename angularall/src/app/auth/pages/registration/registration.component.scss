@@ -45,6 +45,24 @@
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
+    @include respond(tab-port) {
+      // width < 900?
+      flex-direction: column;
+      & :first-child {
+        margin-right: 0;
+      }
+    }
+    & > * {
+      width: 100%;
+    }
+    & :first-child {
+      margin-right: 1rem;
+    }
+    &-btn {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
 
     &-title {
       font-size: 1.6rem;

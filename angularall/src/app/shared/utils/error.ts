@@ -24,6 +24,9 @@ export class ErrorHandlerClass {
       case 'minlength': {
         return `Minimum length ${obj.minlength.requiredLength} character!`;
       }
+      case 'mustMatch': {
+        return `Controls must Match`;
+      }
       default: {
         if (!environment.production) {
           throw errorNotImplement(key);

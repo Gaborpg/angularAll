@@ -6,7 +6,10 @@
         I am looking for a job, please register!
       </p>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div formGroupName="contracting">
+        <div
+          formGroupName="contracting"
+          [myappMustMatch]="['name', 'placeOfBirth']"
+        >
           <h3 class="registration-form-container-label">Employee</h3>
           <div class="registration-form-container">
             <myapp-form-field label="Name">
@@ -43,7 +46,7 @@
         <p class="registration-form-note">
           Fields marked with an asterisk(*) are required
         </p>
-        <div class="registration-form-container">
+        <div class="registration-form-container-btn">
           <myapp-button
             title="Cancel"
             (onClick)="navigateBack()"

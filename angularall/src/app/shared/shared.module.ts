@@ -14,6 +14,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { LayoutMiddleComponent } from './layouts/layout-middle/layout-middle.component';
 import { PanelMiddleComponent } from './layouts/layout-middle/panel-middle.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { MustMatchDirective } from './directives/must-match.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     PanelComponent,
     LayoutMiddleComponent,
     PanelMiddleComponent,
+    MustMatchDirective,
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     LayoutMiddleComponent,
     PanelMiddleComponent,
     NgScrollbarModule,
+    MustMatchDirective,
   ],
   providers: [],
 })

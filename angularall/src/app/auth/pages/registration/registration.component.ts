@@ -29,7 +29,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    console.log(this.form);
   }
 
   navigateBack() {
