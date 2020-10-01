@@ -36,33 +36,46 @@
     <circle id="checkbox__circle" cx="13.5" cy="12.5" r="10"></circle>
   </defs>
 </svg>
+<div class="checkbox-container">
+  <label class="checkbox">
+    <input
+      class="checkbox__state"
+      [id]="id"
+      [required]="required"
+      [checked]="value"
+      [attr.value]="value"
+      [disabled]="disabled"
+      [attr.name]="name"
+      [tabIndex]="tabIndex"
+      type="checkbox"
+      (change)="onChange($event.target.checked)"
+      #checkBox
+    />
 
-<label class="checkbox">
-  <input
-    class="checkbox__state"
-    [id]="id"
-    [required]="required"
-    [checked]="value"
-    [attr.value]="value"
-    [disabled]="disabled"
-    [attr.name]="name"
-    [tabIndex]="tabIndex"
-    type="checkbox"
-    (change)="onChange($event.target.checked)"
-    #checkBox
-  />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 200 25"
+      class="checkbox__icon"
+    >
+      <use xlink:href="#checkbox__line" class="checkbox__line"></use>
+      <use xlink:href="#checkbox__box" class="checkbox__box"></use>
+      <use xlink:href="#checkbox__check" class="checkbox__check"></use>
+      <use xlink:href="#checkbox__circle" class="checkbox__circle"></use>
+    </svg>
 
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 0 200 25"
-    class="checkbox__icon"
+    <div class="checkbox__text">{{ label || "" }}</div>
+  </label>
+  <ng-container
+    *ngIf="
+      !costumeValidator &&
+      !ngControl.value &&
+      ngControl.invalid &&
+      (ngControl.dirty || ngControl.touched)
+    "
   >
-    <use xlink:href="#checkbox__line" class="checkbox__line"></use>
-    <use xlink:href="#checkbox__box" class="checkbox__box"></use>
-    <use xlink:href="#checkbox__check" class="checkbox__check"></use>
-    <use xlink:href="#checkbox__circle" class="checkbox__circle"></use>
-  </svg>
-
-  <div class="checkbox__text">{{ label || "" }}</div>
-</label>
+    <div class="error">
+      {{ ngControl.errors | errorHandle }}
+    </div>
+  </ng-container>
+</div>

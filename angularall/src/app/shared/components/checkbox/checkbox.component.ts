@@ -1,11 +1,14 @@
-import { Attribute, DoCheck, forwardRef, SimpleChanges } from '@angular/core';
+import { Attribute, forwardRef } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { OnChanges } from '@angular/core';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import {
+  AbstractControl,
   ControlValueAccessor,
-  NgControl,
+  NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { nextUniquValueIdCheckbox } from '../z_models/input';
@@ -21,10 +24,15 @@ import { nextUniquValueIdCheckbox } from '../z_models/input';
       useExisting: forwardRef(() => CheckboxComponent),
       multi: true,
     },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => CheckboxComponent),
+      multi: true,
+    },
   ],
 })
 export class CheckboxComponent
-  implements ControlValueAccessor, OnDestroy, OnChanges {
+  implements ControlValueAccessor, OnDestroy, OnChanges, Validator {
   protected _uid = `checkbox-${nextUniquValueIdCheckbox()}`;
   protected _uName = `checkbox-${nextUniquValueIdCheckbox()}`;
   public stateChanges: Subject<void> = new Subject();
@@ -41,6 +49,7 @@ export class CheckboxComponent
     this._value = value != null && `${value}` !== 'false';
     this.stateChanges.next();
     this.onChange(value);
+    this.onValidatorChange();
   }
   protected _value = false;
 
@@ -89,11 +98,25 @@ export class CheckboxComponent
   @Input()
   label = '';
 
+  @Input()
+  costumeValidator = false;
+
+  public ngControl: AbstractControl;
+
   constructor(@Attribute('tabindex') public tabIndex: string) {
     tabIndex = tabIndex || '0';
     this.id = this.id;
     this.name = this.name;
     this.disabled = this.disabled;
+  }
+
+  onValidatorChange: () => void = () => {};
+  validate(control: AbstractControl): ValidationErrors {
+    this.ngControl = control;
+    return control.errors;
+  }
+  registerOnValidatorChange?(fn: () => void): void {
+    this.onValidatorChange = fn;
   }
 
   ngOnChanges() {

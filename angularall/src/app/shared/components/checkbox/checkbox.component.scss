@@ -1,79 +1,18 @@
 @import "variables";
 
-.label {
-  font-family: "Architects Daughter", sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  width: 100%;
-  align-items: center;
-  display: flex;
-  position: relative;
-  margin-bottom: 1.2rem;
-  cursor: pointer;
-
-  .text {
-    margin-left: 2rem;
-  }
-
-  input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-
-    &:disabled {
-      & ~ .checkmark {
-        cursor: not-allowed;
-        background-color: $error;
-      }
-    }
-  }
-
-  .checkmark {
-    height: 2.5rem;
-    min-height: 2.5rem;
-    max-height: 2.5rem;
-    max-width: 2.5rem;
-    min-width: 2.5rem;
-    width: 2.5rem;
-    border-radius: 0.5rem;
-    border: 0.1rem solid rgba($black, 0.8);
-    position: relative;
-
-    &:hover {
-      background-color: rgba($blue, 0.2);
-    }
-
-    &:after {
-      content: "";
-      border: solid $blue;
-      border-width: 0 0.3rem 0.3rem 0;
-      position: relative;
-      top: 42%;
-      left: 50%;
-      height: 1.6rem;
-      width: 0.9rem;
-      display: none;
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-  }
-
-  input[type="checkbox"]:checked ~ .checkmark:after {
-    display: block;
-  }
-}
-
 $duration: 0.8s;
 
 .checkbox {
   display: block;
   position: relative;
-  padding: 1rem 1rem 1rem 3rem;
+  padding: 0rem 1rem 0rem 3rem;
   margin: 0 auto;
   cursor: pointer;
-  border-bottom: solid 1px #ddd;
-  margin-bottom: 2rem;
+
+  &-container {
+    margin-bottom: 2rem;
+    min-height: 4.3rem;
+  }
 
   &:last-child {
     border-bottom: none;
@@ -177,4 +116,8 @@ $duration: 0.8s;
   ~ .checkbox__icon .checkbox__circle {
     animation-name: explode;
   }
+}
+
+.error {
+  margin: 0;
 }

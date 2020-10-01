@@ -44,5 +44,9 @@ body {
 }
 
 .error {
+  font-size: 1.4rem;
+  font-family: "Architects Daughter", sans-serif;
+  font-weight: 300;
   color: $error;
+  margin: 1rem 0;
 }
