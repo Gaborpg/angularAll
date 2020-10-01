@@ -1,2 +1,10 @@
-<myapp-navbar></myapp-navbar>
-<router-outlet></router-outlet>
+<div class="app-container">
+  <div class="app-container-nav">
+    <myapp-navbar></myapp-navbar>
+  </div>
+  <div class="app-container-content">
+    <ng-scrollbar #scrollable [disabled]="disabled">
+      <router-outlet></router-outlet>
+    </ng-scrollbar>
+  </div>
+</div>

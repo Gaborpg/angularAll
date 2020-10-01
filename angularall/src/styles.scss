@@ -3,6 +3,7 @@
 @import "mixings";
 @import "variables";
 @import "flex";
+@import "thirdparty/thirdparty";
 
 *,
 *:after,
@@ -34,7 +35,8 @@ html {
 body {
   box-sizing: border-box;
   background: linear-gradient(#263b60, #243b55);
-  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
 }
 
 html,

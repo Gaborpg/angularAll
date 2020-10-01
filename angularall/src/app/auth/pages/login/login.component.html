@@ -1,4 +1,3 @@
-<p>login works!</p>
 <myapp-layout-middle>
   <myapp-panel-middle>
     <myapp-panel>
@@ -9,7 +8,6 @@
         <myapp-form-field label="Password">
           <myapp-input formControlName="password" type="password"></myapp-input>
         </myapp-form-field>
-        <myapp-checkbox label="teszt" formControlName="check"></myapp-checkbox>
         <div class="flex-sbtw">
           <myapp-button
             type="submit"
@@ -20,6 +18,7 @@
             type="button"
             title="Sign up"
             dynamicColor="#26de81"
+            (onClick)="navigateRegistration()"
           ></myapp-button>
         </div>
       </form>

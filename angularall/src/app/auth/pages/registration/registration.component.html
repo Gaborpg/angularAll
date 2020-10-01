@@ -1,0 +1,61 @@
+<myapp-layout-middle>
+  <myapp-panel-middle>
+    <myapp-panel>
+      <h1 class="registration-header">Registration</h1>
+      <p class="registration-paragraph">
+        I am looking for a job, please register!
+      </p>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div formGroupName="contracting">
+          <h3 class="registration-form-container-label">Employee</h3>
+          <div class="registration-form-container">
+            <myapp-form-field label="Name">
+              <myapp-input formControlName="name"></myapp-input>
+            </myapp-form-field>
+            <myapp-form-field label="Place of birth">
+              <myapp-input formControlName="placeOfBirth"></myapp-input>
+            </myapp-form-field>
+          </div>
+        </div>
+        <div formGroupName="address">
+          <h3 class="registration-form-container-label">Residence</h3>
+          <div class="registration-form-container">
+            <myapp-form-field label="Postcode">
+              <myapp-input formControlName="postcode"></myapp-input>
+            </myapp-form-field>
+            <myapp-form-field label="City">
+              <myapp-input formControlName="city"></myapp-input>
+            </myapp-form-field>
+          </div>
+        </div>
+        <div formGroupName="connection">
+          <h3 class="registration-form-container-label">Contact</h3>
+          <div class="registration-form-container">
+            <myapp-form-field label="Mobile Number">
+              <myapp-input formControlName="mobileNumber"></myapp-input>
+            </myapp-form-field>
+            <myapp-form-field label="Email">
+              <myapp-input formControlName="email"></myapp-input>
+            </myapp-form-field>
+          </div>
+        </div>
+
+        <p class="registration-form-note">
+          Fields marked with an asterisk(*) are required
+        </p>
+        <div class="registration-form-container">
+          <myapp-button
+            title="Cancel"
+            (onClick)="navigateBack()"
+            dynamicColor="#fc5c65"
+          ></myapp-button>
+          <myapp-button
+            title="Registration"
+            type="submit"
+            dynamicColor="#26de81"
+          ></myapp-button>
+        </div>
+      </form>
+    </myapp-panel>
+  </myapp-panel-middle>
+</myapp-layout-middle>

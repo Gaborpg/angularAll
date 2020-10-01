@@ -16,6 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
     SharedModule,
     CommonModule,
   ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

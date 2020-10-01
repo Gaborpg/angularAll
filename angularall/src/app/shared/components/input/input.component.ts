@@ -1,6 +1,5 @@
 import {
   DoCheck,
-  HostListener,
   Inject,
   OnChanges,
   OnInit,

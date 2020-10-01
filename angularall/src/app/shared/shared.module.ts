@@ -13,6 +13,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 
 import { LayoutMiddleComponent } from './layouts/layout-middle/layout-middle.component';
 import { PanelMiddleComponent } from './layouts/layout-middle/panel-middle.component';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PanelMiddleComponent } from './layouts/layout-middle/panel-middle.compo
     PortalModule,
     OverlayModule,
     LayoutModule,
+    NgScrollbarModule,
   ],
   exports: [
     CommonModule,
@@ -49,6 +51,8 @@ import { PanelMiddleComponent } from './layouts/layout-middle/panel-middle.compo
     LayoutModule,
     LayoutMiddleComponent,
     PanelMiddleComponent,
+    NgScrollbarModule,
   ],
+  providers: [],
 })
 export class SharedModule {}

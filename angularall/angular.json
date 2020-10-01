@@ -43,7 +43,8 @@
               "includePaths": [
                 "./src/scss/variables",
                 "./src/scss/mixings",
-                "./src/scss/flex"
+                "./src/scss/flex",
+                "./src/scss"
               ]
             }
           },

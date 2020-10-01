@@ -1,0 +1,70 @@
+@import "mixings";
+
+.registration {
+  &-header {
+    font-size: 2rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    margin-top: 1.9rem;
+  }
+
+  &-paragraph {
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+  }
+
+  &-subtitle {
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    margin-bottom: 3rem;
+  }
+
+  &-form-list {
+    color: #1361ac;
+    padding-left: 3rem;
+
+    &-item {
+      padding-left: 1rem;
+    }
+  }
+
+  &-form-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      margin-top: 3rem;
+    }
+  }
+
+  &-form-note {
+    font-size: 1.4rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.57;
+    letter-spacing: normal;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+}

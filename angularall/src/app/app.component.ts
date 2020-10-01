@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'angularall';
+  disabled = false;
+  compact = false;
+  invertX = false;
+  invertY = false;
+
+  shown: 'native' | 'hover' | 'always' = 'native';
 
   ngOnInit(): void {}
 }
