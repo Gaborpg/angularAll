@@ -1,3 +1,4 @@
+import { LoaderService } from './shared/sevices/loader.service';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './auth/services/login.service';
 
@@ -14,7 +15,10 @@ export class AppComponent implements OnInit {
   invertY = false;
 
   shown: 'native' | 'hover' | 'always' = 'native';
-  constructor(public authService: LoginService) {}
+  constructor(
+    public authService: LoginService,
+    public loaderService: LoaderService
+  ) {}
 
   ngOnInit(): void {}
 }

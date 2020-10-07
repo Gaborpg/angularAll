@@ -51,7 +51,7 @@ export class BackendMockInterceptor implements HttpInterceptor {
         const { body } = req.clone();
         if (this.login(body)) {
           return of(new HttpResponse({ status: 200, body: true })).pipe(
-            delay(500)
+            delay(2000)
           );
         } else {
           return throwError({ error: 'Try again!' });
@@ -73,7 +73,7 @@ export class BackendMockInterceptor implements HttpInterceptor {
               })
             );
           }),
-          delay(500)
+          delay(1000)
         );
       }
       default:
