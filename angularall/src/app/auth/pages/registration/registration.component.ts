@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,27 +10,30 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   public form: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginsService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      contracting: this.fb.group({
-        name: [null, Validators.required],
-        placeOfBirth: [null, Validators.required],
-      }),
-      address: this.fb.group({
-        postcode: [null, Validators.required],
-        city: [null, Validators.required],
-      }),
-      connection: this.fb.group({
-        mobileNumber: [null, Validators.required],
-        email: [null, [Validators.required, Validators.email]],
-      }),
+      name: [null, Validators.required],
+      placeOfBirth: [null, Validators.required],
+      postcode: [null, Validators.required],
+      city: [null, Validators.required],
+      mobileNumber: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, Validators.required],
+      passwordAgain: [null, [Validators.required]],
     });
   }
 
   onSubmit() {
     console.log(this.form);
+    this.loginsService
+      .addUser(this.form.value)
+      .subscribe((res) => console.log(res));
   }
 
   navigateBack() {

@@ -28,8 +28,16 @@ export const MustMatch = (...controlName: string[]) => {
     controls.reduce((pre, cur) => {
       if (pre.value !== cur.value) {
         //Todo: Also I need to write the Error in the same time.
+
+        if (pre.dirty || cur.dirty) {
+          pre.markAsDirty();
+          cur.markAsDirty();
+        }
         cur.setErrors({ mustMatch: true });
         pre.setErrors({ mustMatch: true });
+      } else if (!cur.hasError('required') && !pre.hasError('required')) {
+        cur.setErrors(null);
+        pre.setErrors(null);
       }
       return null;
     });

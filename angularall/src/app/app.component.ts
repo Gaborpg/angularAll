@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './auth/services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   invertY = false;
 
   shown: 'native' | 'hover' | 'always' = 'native';
+  constructor(public authService: LoginService) {}
 
   ngOnInit(): void {}
 }

@@ -1,8 +1,10 @@
 @import "variables";
 @import "mixings";
-
 :host {
-  width: 100%;
+  @include respond(tab-port) {
+    // width < 900?
+    width: 100%;
+  }
 }
 .panel-container {
   border-radius: 0.5rem;

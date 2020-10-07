@@ -15,6 +15,7 @@ import { LayoutMiddleComponent } from './layouts/layout-middle/layout-middle.com
 import { PanelMiddleComponent } from './layouts/layout-middle/panel-middle.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MustMatchDirective } from './directives/must-match.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MustMatchDirective } from './directives/must-match.directive';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     PortalModule,
@@ -55,6 +57,7 @@ import { MustMatchDirective } from './directives/must-match.directive';
     PanelMiddleComponent,
     NgScrollbarModule,
     MustMatchDirective,
+    HttpClientModule,
   ],
   providers: [],
 })

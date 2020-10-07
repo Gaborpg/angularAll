@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'myapp-login',
@@ -9,16 +10,22 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public form: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginsService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       user: [null, [Validators.required]],
-      password: [null, [Validators.required, Validators.minLength(8)]],
+      password: [null, [Validators.required]],
     });
   }
   onSubmit() {
-    console.log(this.form);
+    this.loginsService
+      .login(this.form.value)
+      .subscribe((res) => console.log(res, 'login'));
   }
 
   navigateRegistration() {

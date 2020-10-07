@@ -5,11 +5,12 @@
       <p class="registration-paragraph">
         I am looking for a job, please register!
       </p>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div
-          formGroupName="contracting"
-          [myappMustMatch]="['name', 'placeOfBirth']"
-        >
+      <form
+        [formGroup]="form"
+        [myappMustMatch]="['password', 'passwordAgain']"
+        (ngSubmit)="onSubmit()"
+      >
+        <div>
           <h3 class="registration-form-container-label">Employee</h3>
           <div class="registration-form-container">
             <myapp-form-field label="Name">
@@ -20,7 +21,7 @@
             </myapp-form-field>
           </div>
         </div>
-        <div formGroupName="address">
+        <div>
           <h3 class="registration-form-container-label">Residence</h3>
           <div class="registration-form-container">
             <myapp-form-field label="Postcode">
@@ -31,7 +32,7 @@
             </myapp-form-field>
           </div>
         </div>
-        <div formGroupName="connection">
+        <div>
           <h3 class="registration-form-container-label">Contact</h3>
           <div class="registration-form-container">
             <myapp-form-field label="Mobile Number">
@@ -39,6 +40,23 @@
             </myapp-form-field>
             <myapp-form-field label="Email">
               <myapp-input formControlName="email"></myapp-input>
+            </myapp-form-field>
+          </div>
+        </div>
+        <div>
+          <h3 class="registration-form-container-label">Contact</h3>
+          <div class="registration-form-container">
+            <myapp-form-field label="Password">
+              <myapp-input
+                formControlName="password"
+                type="password"
+              ></myapp-input>
+            </myapp-form-field>
+            <myapp-form-field label="Password Again">
+              <myapp-input
+                formControlName="passwordAgain"
+                type="password"
+              ></myapp-input>
             </myapp-form-field>
           </div>
         </div>

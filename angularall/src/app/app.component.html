@@ -1,5 +1,5 @@
 <div class="app-container">
-  <div class="app-container-nav">
+  <div class="app-container-nav" *ngIf="authService.authUser | async">
     <myapp-navbar></myapp-navbar>
   </div>
   <div class="app-container-content">
