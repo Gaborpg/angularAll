@@ -16,6 +16,7 @@ import { PanelMiddleComponent } from './layouts/layout-middle/panel-middle.compo
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MustMatchDirective } from './directives/must-match.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { TooltipDirective } from './directives/tooltip.directive';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutMiddleComponent,
     PanelMiddleComponent,
     MustMatchDirective,
+    TooltipDirective,
   ],
   imports: [
     CommonModule,
@@ -58,6 +60,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgScrollbarModule,
     MustMatchDirective,
     HttpClientModule,
+    TooltipDirective,
   ],
   providers: [],
 })
