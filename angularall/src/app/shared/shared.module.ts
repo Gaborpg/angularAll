@@ -17,6 +17,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MustMatchDirective } from './directives/must-match.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipDirective } from './directives/tooltip.directive';
+import { PortalComponent } from './components/portal/portal.component';
+import { RefreshOnChangeDirectiveDirective } from './directives/refresh-on-change-directive.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { TooltipDirective } from './directives/tooltip.directive';
     PanelMiddleComponent,
     MustMatchDirective,
     TooltipDirective,
+    PortalComponent,
+    RefreshOnChangeDirectiveDirective,
   ],
   imports: [
     CommonModule,
@@ -61,6 +65,7 @@ import { TooltipDirective } from './directives/tooltip.directive';
     MustMatchDirective,
     HttpClientModule,
     TooltipDirective,
+    PortalComponent,
   ],
   providers: [],
 })

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { LayoutMediaQueryService } from './../../../shared/sevices/layout-media-query-service.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PortalComponent } from 'src/app/shared/components/portal/portal.component';
 import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent implements OnInit {
   public form: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
